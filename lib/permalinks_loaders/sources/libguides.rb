@@ -14,10 +14,7 @@ module PermalinksLoaders
     private
 
       def source_data
-        @source_data ||= do
-          list = LibGuides::API::Az::List.new
-          list.load
-        end
+        @source_data ||= LibGuides::API::Az::List.new.load
       end
 
     end
