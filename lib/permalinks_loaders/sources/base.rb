@@ -23,7 +23,7 @@ module PermalinksLoaders
       def to_txt
         permalinks.map do |permalink|
           "set #{permalink.key} #{permalink.url}"
-        end.join("\n") + "\n"
+        end.join("\r\n") + "\r\n"
       end
     end
   end
