@@ -15,9 +15,9 @@ module PermalinksLoaders
       end
 
       def get_permalinks
-        xerxes_active_records.map do |record|
+        xerxes_active_records.reject {|p| p.url.blank? }.map do |record|
           Permalink.new(record.metalib_id, record.url)
-        end.reject { |p| p.url.blank? }
+        end
       end
 
     end

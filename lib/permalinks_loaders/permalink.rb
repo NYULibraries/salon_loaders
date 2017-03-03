@@ -4,7 +4,7 @@ module PermalinksLoaders
 
     def initialize(key, url)
       @key = key
-      @url = url
+      @url = url.gsub(/ /,'%20')
     end
 
   end
