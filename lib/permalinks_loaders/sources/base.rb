@@ -15,6 +15,16 @@ module PermalinksLoaders
       def permalinks
         (@permalinks || [])
       end
+
+      def write_txt(filepath)
+        File.open(filepath, 'w'){ |f| f.write to_txt }
+      end
+
+      def to_txt
+        permalinks.map do |permalink|
+          "set #{permalink.key} #{permalink.url}"
+        end.join("\n")
+      end
       #
       # def self.connection_configured?
       #   config = ActiveRecord::Base.configurations["old_arch"]
