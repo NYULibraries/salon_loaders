@@ -1,0 +1,12 @@
+mysql: &mysql
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+
+xerxes:
+  <<: *mysql
+  host: localhost
+  database: arch
+  username: root
+  password:

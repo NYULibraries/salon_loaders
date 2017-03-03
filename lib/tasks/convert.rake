@@ -9,7 +9,7 @@ namespace :permalinks_loaders do
 
   desc 'Generate a Redis-ready key/value txt file from Xerxes data'
   task :xerxes do
-
+    PermalinksLoaders::Sources::Xerxes.new.write_txt "xerxes.txt"
   end
 
 end
