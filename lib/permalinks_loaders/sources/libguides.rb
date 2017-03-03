@@ -3,20 +3,23 @@ require 'lib_guides/api'
 module PermalinksLoaders
   module Sources
     class Libguides < Base
-      attr_accessor :list
 
       def initialize
-        @list = LibGuides::API::Az::List.new
-        @permalinks = get_permalinks
+        @key_field = :id
+        @url_field = :url
+        @source_data = source_data
+        super()
       end
 
-      private
-      def get_permalinks
-        list.load
-        list.map do |asset|
-          Permalink.new(asset.id, asset.url)
+    private
+
+      def source_data
+        @source_data ||= do
+          list = LibGuides::API::Az::List.new
+          list.load
         end
       end
+
     end
   end
 end

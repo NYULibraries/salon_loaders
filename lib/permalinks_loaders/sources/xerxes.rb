@@ -4,20 +4,17 @@ module PermalinksLoaders
   module Sources
     class Xerxes < Base
 
-      def initialize()
-        @permalinks = get_permalinks
+      def initialize
+        @key_field = :metalib_id
+        @url_field = :url
+        @source_data = source_data
+        super()
       end
 
-      private
+    private
 
-      def xerxes_active_records
-        @xerxes_active_records ||= ActiveRecordSources::Xerxes.all
-      end
-
-      def get_permalinks
-        xerxes_active_records.reject {|p| p.url.blank? }.map do |record|
-          Permalink.new(record.metalib_id, record.url)
-        end
+      def source_data
+        @source_data ||= ActiveRecordSources::Xerxes.all.reject {|p| p.url.blank? }
       end
 
     end

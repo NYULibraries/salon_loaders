@@ -6,10 +6,10 @@ module PermalinksLoaders
       extend Forwardable
       def_delegators :permalinks, :each
 
-      attr_accessor :permalinks
+      attr_accessor :permalinks, :source_data, :key_field, :url_field
 
-      def initialize()
-        # Load resources
+      def initialize
+        @permalinks = get_permalinks
       end
 
       def permalinks
@@ -25,6 +25,15 @@ module PermalinksLoaders
           "set #{permalink.key} #{permalink.url}"
         end.join("\r\n") + "\r\n"
       end
+
+    protected
+
+      def get_permalinks
+        source_data.map do |link|
+          Permalink.new(link.send(self.key_field), link.send(self.url_field))
+        end
+      end
+
     end
   end
 end
