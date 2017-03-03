@@ -1,4 +1,4 @@
-require_relative 'xerxes_active_record'
+require_relative 'active_record_sources/xerxes'
 
 module PermalinksLoaders
   module Sources
@@ -11,7 +11,7 @@ module PermalinksLoaders
       private
 
       def xerxes_active_records
-        @xerxes_active_records ||= XerxesActiveRecord.all
+        @xerxes_active_records ||= ActiveRecordSources::Xerxes.all
       end
 
       def get_permalinks
