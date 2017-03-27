@@ -30,7 +30,7 @@ module PermalinksLoaders
 
       def get_permalinks
         source_data.map do |link|
-          Permalink.new(link.send(self.key_field), link.send(self.url_field))
+          Permalink.new(key: link.send(self.key_field), url: link.send(self.url_field))
         end
       end
 
