@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/NYULibraries/lib_guides-api.git
-  revision: 651d4c46dffdfcdef60dc2f377eb1b4658f81d62
+  revision: c9e06fb65a78144528cf396ac92e6d22a326778d
   specs:
     lib_guides-api (0.0.0)
       faraday (>= 0.11)
