@@ -5,7 +5,11 @@ gem 'activerecord'
 gem 'rake'
 gem 'lib_guides-api', github: 'NYULibraries/lib_guides-api'
 
-gem 'rspec'
-gem 'pry'
+group :test do
+  gem 'rspec'
+  gem 'rspec-its'
+  gem 'coveralls', require: false
+  gem 'pry'
+end
 
 gem 'ox'
