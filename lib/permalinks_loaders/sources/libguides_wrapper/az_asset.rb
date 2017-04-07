@@ -25,7 +25,8 @@ module PermalinksLoaders
         end
 
         private
-        LIBRARY_REVIEW_REGEX = /[\w\s]+\|\s+(?<id>NYU\d+)\s+\|\s+(?<url>#{URI.regexp})/
+        NULL_ID_TEXT = "NULL"
+        LIBRARY_REVIEW_REGEX = /[\w\s]+\|\s+((?<id>NYU\d+)|#{NULL_ID_TEXT})\s+\|\s+(?<url>#{URI.regexp})/
 
         def library_review_match_data
           @library_review_match_data ||= library_review.match(LIBRARY_REVIEW_REGEX) if library_review

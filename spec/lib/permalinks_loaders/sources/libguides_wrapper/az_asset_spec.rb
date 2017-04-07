@@ -37,8 +37,16 @@ describe PermalinksLoaders::Sources::LibguidesWrapper::AzAsset do
         let(:library_review){ "ONLY KARMS | NYU00676 | http://dl.acm.org/dl.cfm |" }
         it { is_expected.to eq "http://dl.acm.org/dl.cfm" }
       end
-      context "with invalid library_review" do
+      context "with invalid library_review URL" do
         let(:library_review){ "ONLY KARMS | NYU00676 | applesauce |" }
+        it { is_expected.to eq nil }
+      end
+      context "with invalid library_review ID in null form" do
+        let(:library_review){ "ONLY KARMS | NULL | http://dl.acm.org/dl.cfm |" }
+        it { is_expected.to eq "http://dl.acm.org/dl.cfm" }
+      end
+      context "with invalid library_review ID not in null form" do
+        let(:library_review){ "ONLY KARMS | gobbledigook | http://dl.acm.org/dl.cfm |" }
         it { is_expected.to eq nil }
       end
     end
@@ -54,8 +62,16 @@ describe PermalinksLoaders::Sources::LibguidesWrapper::AzAsset do
         let(:library_review){ "ONLY KARMS | NYU00676 | http://dl.acm.org/dl.cfm |" }
         it { is_expected.to eq "NYU00676" }
       end
-      context "with invalid library_review" do
-        let(:library_review){ "ONLY KARMS | 8675309 | http://dl.acm.org/dl.cfm |" }
+      context "with invalid library_review URL" do
+        let(:library_review){ "ONLY KARMS | NYU00676 | applesauce |" }
+        it { is_expected.to eq nil }
+      end
+      context "with invalid library_review ID in null form" do
+        let(:library_review){ "ONLY KARMS | NULL | http://dl.acm.org/dl.cfm |" }
+        it { is_expected.to eq nil }
+      end
+      context "with invalid library_review ID not in null form" do
+        let(:library_review){ "ONLY KARMS | gobbledigook | http://dl.acm.org/dl.cfm |" }
         it { is_expected.to eq nil }
       end
     end
