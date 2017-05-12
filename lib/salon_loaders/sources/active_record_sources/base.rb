@@ -1,6 +1,6 @@
 require 'active_record'
 
-module PermalinksLoaders
+module SalonLoaders
   module Sources
     module ActiveRecordSources
       class Base < ActiveRecord::Base

@@ -1,6 +1,6 @@
 require_relative 'active_record_sources/xerxes'
 
-module PermalinksLoaders
+module SalonLoaders
   module Sources
     class Xerxes < Base
 

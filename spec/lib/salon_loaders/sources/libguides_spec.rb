@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PermalinksLoaders::Sources::Libguides do
+describe SalonLoaders::Sources::Libguides do
   let(:libguides){ described_class.new }
 
   describe "get_permalinks" do
@@ -19,10 +19,10 @@ describe PermalinksLoaders::Sources::Libguides do
       expect(subject.length).to eq 4
     end
     it "should have correct members" do
-      expect(subject[0]).to be_a PermalinksLoaders::Permalink
-      expect(subject[1]).to be_a PermalinksLoaders::Permalink
-      expect(subject[2]).to be_a PermalinksLoaders::Permalink
-      expect(subject[3]).to be_a PermalinksLoaders::Permalink
+      expect(subject[0]).to be_a SalonLoaders::Permalink
+      expect(subject[1]).to be_a SalonLoaders::Permalink
+      expect(subject[2]).to be_a SalonLoaders::Permalink
+      expect(subject[3]).to be_a SalonLoaders::Permalink
     end
     describe "first permalink (libguides id)" do
       subject{ libguides.get_permalinks.detect{|x| x.key == '1' } }
