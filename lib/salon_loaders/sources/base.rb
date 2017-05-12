@@ -17,7 +17,6 @@ module SalonLoaders
       end
 
       def write_txt(filepath)
-        # File.open(filepath, 'w'){ |f| f.write to_txt }
         write_file(filepath){ to_txt }
       end
 
@@ -34,7 +33,7 @@ module SalonLoaders
       def to_json
         permalinks.map do |permalink|
           [permalink.key, permalink.url]
-        end.to_h
+        end.to_h.to_json
       end
 
     protected
