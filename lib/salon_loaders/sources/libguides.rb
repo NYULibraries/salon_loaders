@@ -1,6 +1,6 @@
 require 'lib_guides/api'
 
-module PermalinksLoaders
+module SalonLoaders
   module Sources
     class Libguides < Base
 

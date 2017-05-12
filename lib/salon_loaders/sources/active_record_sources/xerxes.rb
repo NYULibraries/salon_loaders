@@ -1,7 +1,7 @@
 require 'ox'
 require_relative 'base'
 
-module PermalinksLoaders
+module SalonLoaders
   module Sources
     module ActiveRecordSources
       class Xerxes < Base

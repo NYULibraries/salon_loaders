@@ -1,4 +1,4 @@
-module PermalinksLoaders
+module SalonLoaders
   module Sources
     module LibguidesWrapper
       class AzAsset

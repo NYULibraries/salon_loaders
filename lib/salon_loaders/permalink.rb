@@ -1,4 +1,4 @@
-module PermalinksLoaders
+module SalonLoaders
   class Permalink
     attr_accessor :key, :url, :use_proxy
 

@@ -1,4 +1,4 @@
-module PermalinksLoaders
+module SalonLoaders
   module Sources
     class Base
       include Enumerable

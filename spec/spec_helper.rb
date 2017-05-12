@@ -18,7 +18,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'coveralls'
 Coveralls.wear!
-require 'permalinks_loaders'
+require 'salon_loaders'
 require 'rspec/its'
 require 'pry'
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PermalinksLoaders::Sources::LibguidesWrapper::AzAsset do
+describe SalonLoaders::Sources::LibguidesWrapper::AzAsset do
   let(:asset){ described_class.new libguides_asset }
   let(:libguides_asset) do
     instance_double(LibGuides::API::Az::Asset,
