@@ -6,6 +6,12 @@ GIT
       faraday (>= 0.11)
       json
 
+PATH
+  remote: .
+  specs:
+    salon_loaders (0.0.1)
+      rake (>= 12)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -34,7 +40,7 @@ GEM
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     i18n (0.8.1)
-    json (2.0.3)
+    json (2.1.0)
     method_source (0.8.2)
     minitest (5.10.1)
     multipart-post (2.0.0)
@@ -65,7 +71,7 @@ GEM
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.0)
+    simplecov-html (0.10.1)
     slop (3.6.0)
     term-ansicolor (1.4.0)
       tins (~> 1.0)
@@ -85,9 +91,9 @@ DEPENDENCIES
   mysql2
   ox
   pry
-  rake
   rspec
   rspec-its
+  salon_loaders!
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
