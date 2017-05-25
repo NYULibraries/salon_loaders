@@ -2,3 +2,4 @@
 *.json
 coverage/
 .ruby-version
+Gemfile.lock

@@ -5,10 +5,13 @@
 
 ## Usage
 
+### Libguides
+
 Generate JSON from libguides:
 
 ```
-rake salon_loaders:libguides:json
+LIB_GUIDES_CLIENT_ID={CLIENT_ID} LIB_GUIDES_CLIENT_SECRET={SECRET} \
+  rake salon_loaders:libguides:json
 ```
 
 or generate a txt file for automatic loading into redis:
@@ -17,7 +20,9 @@ or generate a txt file for automatic loading into redis:
 rake salon_loaders:libguides:txt
 ```
 
-The same tasks are available for Xerxes:
+### Xerxes **Deprecated**
+
+The same tasks are available for Xerxes, but this is discouraged method since the Xerxes IDs now live in the Libguides:
 
 ```
 rake salon_loaders:xerxes:json
@@ -33,3 +38,5 @@ xerxes_permalinks.each do |permalink|
   p permalink.url
 end
 ```
+
+This relies on the `config/databases.yml` pointing to the credentials for the actual database. In this repos, the jobs assume a local database with the Xerxes production data loaded in.

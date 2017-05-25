@@ -3,7 +3,7 @@ require_relative '../salon_loaders'
 namespace :salon_loaders do
 
   namespace :libguides do
-    desc 'Generate a Redis-ready key/value txt file from LibGuides data'
+    desc 'Generate a Redis-ready key/value txt file from LibGuides data; provide envvars LIB_GUIDES_CLIENT_ID and LIB_GUIDES_CLIENT_SECRET'
     task :txt do
       SalonLoaders::Sources::Libguides.new.write_txt "libguides.txt"
     end
@@ -15,7 +15,7 @@ namespace :salon_loaders do
   end
 
   namespace :xerxes do
-    desc 'Generate a Redis-ready key/value txt file from Xerxes data'
+    desc 'Generate a Redis-ready key/value txt file from Xerxes data; provide envvars LIB_GUIDES_CLIENT_ID and LIB_GUIDES_CLIENT_SECRET'
     task :txt do
       SalonLoaders::Sources::Xerxes.new.write_txt "xerxes.txt"
     end
@@ -25,15 +25,5 @@ namespace :salon_loaders do
       SalonLoaders::Sources::Xerxes.new.write_json "xerxes.json"
     end
   end
-
-  # desc 'Generate a Redis-ready key/value txt file from LibGuides data'
-  # task :libguides do
-  #   SalonLoaders::Sources::Libguides.new.write_txt "libguides.txt"
-  # end
-  #
-  # desc 'Generate a Redis-ready key/value txt file from Xerxes data'
-  # task :xerxes do
-  #   SalonLoaders::Sources::Xerxes.new.write_txt "xerxes.txt"
-  # end
 
 end
