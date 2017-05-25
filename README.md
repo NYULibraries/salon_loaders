@@ -20,7 +20,7 @@ or generate a txt file for automatic loading into redis:
 rake salon_loaders:libguides:txt
 ```
 
-### Xerxes **Deprecated**
+### Xerxes <span style="color:red">_Deprecated_</span>
 
 The same tasks are available for Xerxes, but this is discouraged method since the Xerxes IDs now live in the Libguides:
 

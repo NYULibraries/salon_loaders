@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SalonLoaders::Sources::Libguides do
   let(:libguides){ described_class.new }
 
-  describe "get_permalinks" do
+  describe "#get_permalinks" do
     subject{ libguides.get_permalinks }
     let(:list){ instance_double LibGuides::API::Az::List, load: data }
     let(:data){ [api_asset1, api_asset2, api_asset3] }
@@ -45,4 +45,5 @@ describe SalonLoaders::Sources::Libguides do
       its(:use_proxy){ is_expected.to be_truthy }
     end
   end
+
 end
