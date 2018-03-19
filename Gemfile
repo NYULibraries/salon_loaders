@@ -1,7 +1,7 @@
 source "https://rubygems.org"
-gemspec
 
-gem 'lib_guides-api', github: 'NYULibraries/lib_guides-api'
+gem 'rake', '>= 12'
+gem 'lib_guides-api', github: "NYULibraries/lib_guides-api"
 
 group :test do
   gem 'rspec'
