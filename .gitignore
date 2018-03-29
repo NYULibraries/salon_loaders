@@ -3,3 +3,4 @@
 coverage/
 .ruby-version
 Gemfile.lock
+*.local.sh
