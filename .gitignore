@@ -1,6 +1,4 @@
 *.txt
 *.json
 coverage/
-.ruby-version
-Gemfile.lock
 *.local.sh
