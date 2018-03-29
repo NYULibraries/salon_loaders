@@ -5,17 +5,15 @@ module SalonLoaders
     class Libguides < Base
 
       def initialize
-        @key_field = :id
-        @url_field = :url
         @source_data = source_data
         super()
       end
 
       def get_permalinks
         source_data.inject([]) do |result, asset|
-          if asset.url
-            result << Permalink.new(key: asset.id, url: asset.url, use_proxy: asset.enable_proxy?)
-            result << Permalink.new(key: asset.metalib_id, url: asset.url, use_proxy: asset.enable_proxy?) if asset.metalib_id
+          if asset.resource_url
+            result << Permalink.new(key: asset.salon_id, url: asset.resource_url, use_proxy: asset.enable_proxy?) if asset.salon_id
+            result << Permalink.new(key: asset.metalib_id, url: asset.resource_url, use_proxy: asset.enable_proxy?) if asset.metalib_id
           end
           result
         end
