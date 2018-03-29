@@ -32,8 +32,8 @@ module SalonLoaders
 
       def to_json
         permalinks.map do |permalink|
-          [permalink.key, permalink.url]
-        end.to_h.to_json
+          {id: permalink.key, url: permalink.url}
+        end.to_json
       end
 
     protected
