@@ -41,6 +41,6 @@ describe SalonLoaders::Sources::Base do
 
   describe '#to_json' do
     subject { base.to_json }
-    it { is_expected.to include "\"1\":\"http://nyu.edu\"" }
+    it { is_expected.to eq "[{\"id\":\"1\",\"url\":\"http://nyu.edu\"},{\"id\":\"2\",\"url\":\"http://google.com\"}]" }
   end
 end
