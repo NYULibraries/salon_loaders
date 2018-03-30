@@ -1,4 +1,4 @@
-*.txt
+.git
 *.json
-coverage/
+*.txt
 *.local.sh

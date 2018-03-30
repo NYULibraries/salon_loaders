@@ -2,6 +2,8 @@ module SalonLoaders
   class Permalink
     attr_accessor :key, :url, :use_proxy
 
+    @@proxy_prefix = "http://proxy.library.nyu.edu/login?url="
+
     def initialize(key:, url:, use_proxy: false)
       @key = key
       @url = url.gsub(/ /,'%20')
@@ -10,7 +12,7 @@ module SalonLoaders
 
     def url
       return @url unless use_proxy
-      "https://ezproxy.library.nyu.edu/login?url=#{URI.encode(@url)}"
+      "#{@@proxy_prefix}#{URI.encode(@url)}"
     end
 
   end
