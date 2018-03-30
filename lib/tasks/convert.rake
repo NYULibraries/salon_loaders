@@ -14,16 +14,4 @@ namespace :salon_loaders do
     end
   end
 
-  namespace :xerxes do
-    desc 'Generate a Redis-ready key/value txt file from Xerxes data; provide envvars LIB_GUIDES_CLIENT_ID and LIB_GUIDES_CLIENT_SECRET'
-    task :txt do
-      SalonLoaders::Sources::Xerxes.new.write_txt "xerxes.txt"
-    end
-
-    desc 'Generate a Redis-ready key/value json file from Xerxes data'
-    task :json do
-      SalonLoaders::Sources::Xerxes.new.write_json "xerxes.json"
-    end
-  end
-
 end
