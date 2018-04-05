@@ -1,4 +1,6 @@
 .git
 *.json
-*.txt
+coverage/
 *.local.sh
+
+*.txt
