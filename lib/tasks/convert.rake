@@ -10,7 +10,14 @@ namespace :salon_loaders do
 
     desc 'Generate a Redis-ready key/value json file from LibGuides data'
     task :json do
-      SalonLoaders::Sources::Libguides.new.write_json "libguides.json"
+      loader = SalonLoaders::Sources::Libguides.new
+      loader.write_json("libguides.json")
+      if ENV["DEBUG"]
+        loader.unreadable_resources.map {|r| loader.logger.info r }
+        loader.logger.info "#{loader.resources_read} resources read"
+        loader.logger.info "#{loader.permalinks_created} permalinks created"
+        loader.logger.info "#{loader.resources_unreadable} resources unreadable"
+      end
     end
   end
 
