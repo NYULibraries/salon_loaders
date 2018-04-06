@@ -6,9 +6,9 @@ export TOKEN=`curl -s -X POST \
   -d scope=admin \
   $SALON_LOGIN_TOKEN_URL \
   | sed 's/.*\"access_token\": *\"\\([^\"]*\\)\".*}/\\1/g'`
-curl -H \"Content-Type: application/json\" \
-  -H \"Authorization: Bearer $TOKEN\" \
+curl -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $TOKEN" \
   -X POST \
-  --data \"@libguides.json\" \
+  --data "@libguides.json" \
   $SALON_LOAD_URL
 unset TOKEN
