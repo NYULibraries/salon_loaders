@@ -26,5 +26,5 @@ curl -H \"Content-Type: application/json\" \
   -H \"Authorization: Bearer $TOKEN\" \
   -X POST \
   --data \"@libguides.json\" \
-  $SALON_HOST/arch/reset_with_array
+  $SALON_LOAD_URL
 unset TOKEN
