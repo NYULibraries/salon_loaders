@@ -1,7 +1,0 @@
-git clone git@github.com:NYULibraries/permalinks_loaders_data.git
-cd permalinks_loaders_data
-mv ../*.txt .
-git add -A
-git diff-index --quiet HEAD || (git commit -m "Txt ${JOB_NAME} ${BUILD_NUMBER}")
-cd ..
-rm -rf permalinks_loaders_data
