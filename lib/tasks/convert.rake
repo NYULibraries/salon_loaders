@@ -13,11 +13,20 @@ namespace :salon_loaders do
       loader = SalonLoaders::Sources::Libguides.new
       loader.write_json("libguides.json")
       if ENV["DEBUG"]
-        loader.unreadable_resources.map {|r| loader.logger.info r }
-        loader.logger.info "#{loader.resources_read} resources read"
-        loader.logger.info "#{loader.permalinks_created} permalinks created"
-        loader.logger.info "#{loader.resources_unreadable} resources unreadable"
+        Rake::Task["salon_loaders:libguides:logger"].invoke(loader)
       end
+    end
+
+    desc 'Spit out information about what permalinks could and could not be processed'
+    task :logger, :loader do |t, args|
+      args.with_defaults(:loader => SalonLoaders::Sources::Libguides.new)
+      loader = args[:loader]
+      logger = Logger.new((ENV['LOGGER'] || STDOUT))
+      loader.error_records.each do |r|
+        logger.info "Could not load resource: LibGuides ID: #{r.id}; LibGuides URL: #{r.url}; LibGuides library review: #{r.library_review}"
+      end
+      logger.info "#{loader.permalinks.count} permalinks created"
+      logger.info "#{loader.error_records.count} resources unreadable"
     end
   end
 
