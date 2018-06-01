@@ -28,7 +28,7 @@ describe SalonLoaders::Sources::Libguides do
       context 'when a metalib id is in the library review field' do
         context 'and PROXY_YES is present' do
           subject { libguides.get_permalinks.detect{|x| x.key == 'NYU00685' } }
-          its(:url){ is_expected.to eq "http://proxy.library.nyu.edu/login?url=http://link.springer.com/search?showAll=false" }
+          its(:url){ is_expected.to eq "http://proxy.library.nyu.edu/login?qurl=http://link.springer.com/search?showAll=false" }
         end
       end
     end
@@ -49,7 +49,7 @@ describe SalonLoaders::Sources::Libguides do
       context 'when no metalib id is in the library review field' do
         context 'and the url has a Salon ID but PROXY_YES is present' do
           subject{ libguides.get_permalinks.detect{|x| x.key == 'SLNID2' } }
-          its(:url){ is_expected.to eq "http://proxy.library.nyu.edu/login?url=http://streaming.videatives.com/autologin/123" }
+          its(:url){ is_expected.to eq "http://proxy.library.nyu.edu/login?qurl=http://streaming.videatives.com/autologin/123" }
           its(:use_proxy){ is_expected.to be_truthy }
         end
       end
