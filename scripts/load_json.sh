@@ -1,4 +1,5 @@
-rake salon_loaders:libguides:json
+#!/bin/sh -ex
+bundle exec rake salon_loaders:libguides:json
 export TOKEN=`curl -s -X POST \
   -d grant_type=client_credentials \
   -d client_id=$SALON_CLIENT_ID \

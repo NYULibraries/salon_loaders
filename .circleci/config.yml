@@ -20,7 +20,7 @@ jobs:
           command: |
             touch secrets.env
             docker-compose build
-            docker-compose run app rake
+            docker-compose run app bundle exec rake
       - run:
           name: Deploy docker image
           command: |
