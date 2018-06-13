@@ -23,7 +23,7 @@ module SalonLoaders
           else
             error_records << asset
           end
-          result
+          result.uniq(&:key)
         end
       end
 

@@ -12,7 +12,7 @@ module SalonLoaders
 
     def url
       return @url unless use_proxy
-      "#{@@proxy_prefix}#{URI.encode(@url)}"
+      "#{@@proxy_prefix}#{CGI.escape(@url)}"
     end
 
   end
