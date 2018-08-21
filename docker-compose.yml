@@ -3,5 +3,16 @@ services:
 
   app:
     build: .
-    image: nyulibraries/salon_loaders
-    command: "tail -f /dev/null"
+    image: salon_loaders
+    environment:
+      SALON_CLIENT_ID:
+      SALON_CLIENT_SECRET:
+      SALON_LOGIN_TOKEN_URL:
+      SALON_LOAD_URL:
+
+  test:
+    build: .
+    image: salon_loaders
+    command: "bundle exec rake"
+    environment:
+      CI:

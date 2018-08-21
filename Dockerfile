@@ -1,10 +1,17 @@
-FROM ruby:2.5
+FROM ruby:2.5.1-alpine
 
-RUN apt-get update -qq && apt-get install -y build-essential
-RUN apt-get install -y redis-tools
+ENV INSTALL_PATH /app
+ENV BUILD_PACKAGES ruby-dev build-base
+ENV RUN_PACKAGES curl git
+
+WORKDIR $INSTALL_PATH
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle config --global github.https true
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN apk add --no-cache $BUILD_PACKAGES $RUN_PACKAGES \
+  && gem install bundler && bundle install --jobs 20 --retry 5 \
+  && apk del $BUILD_PACKAGES
 
 COPY . .
+
+CMD scripts/load_json.sh
