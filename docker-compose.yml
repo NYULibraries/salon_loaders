@@ -18,6 +18,13 @@ services:
 
   test:
     image: salon_loaders
+    build:
+      context: .
+      cache_from:
+        - ruby:2.5.1-alpine
+        - salon_loaders
+        - nyulibraries/salon_loaders:latest
+        - nyulibraries/salon_loaders:$BRANCH_NO_SLASH
     command: "bundle exec rake"
     environment:
       CI:
