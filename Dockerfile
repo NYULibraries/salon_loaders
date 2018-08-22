@@ -11,16 +11,15 @@ WORKDIR $INSTALL_PATH
 
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 RUN apk add --no-cache $BUILD_PACKAGES $RUN_PACKAGES \
-  && bundle config --global github.https true \
+  && bundle config --local github.https true \
   && gem install bundler && bundle install --jobs 20 --retry 5 \
   && apk del $BUILD_PACKAGES \
-  && chown -R docker:docker ./ \
   && chown -R docker:docker /usr/local/bundle
 
-COPY --chown=docker:docker . .
+RUN mkdir coverage && chown docker:docker coverage
 
 USER docker
 
-RUN bundle config --global github.https true
+COPY --chown=docker:docker . .
 
 CMD scripts/load_json.sh
