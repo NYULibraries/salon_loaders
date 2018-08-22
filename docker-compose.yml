@@ -2,6 +2,7 @@ version: "3.2"
 services:
 
   app:
+    image: salon_loaders
     build:
       context: .
       cache_from:
@@ -9,7 +10,6 @@ services:
         - salon_loaders
         - nyulibraries/salon_loaders:latest
         - nyulibraries/salon_loaders:$BRANCH_NO_SLASH
-    image: salon_loaders
     environment:
       SALON_CLIENT_ID:
       SALON_CLIENT_SECRET:
@@ -17,6 +17,7 @@ services:
       SALON_LOAD_URL:
 
   test:
+    image: salon_loaders
     build:
       context: .
       cache_from:
@@ -24,7 +25,14 @@ services:
         - salon_loaders
         - nyulibraries/salon_loaders:latest
         - nyulibraries/salon_loaders:$BRANCH_NO_SLASH
-    image: salon_loaders
     command: "bundle exec rake"
     environment:
       CI:
+
+  scan:
+    image: salon_loaders_scan
+    build:
+      context: .
+      dockerfile: Dockerfile.scan
+      args:
+        TOKEN: $AQUA_MICROSCANNER_TOKEN
