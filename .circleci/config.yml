@@ -27,6 +27,10 @@ jobs:
             docker-compose build
             docker-compose run test
       - run:
+          name: Scan image
+          command: |
+            docker-compose build --no-cache scan
+      - run:
           name: Docker login
           command: |
             docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
