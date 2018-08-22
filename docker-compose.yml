@@ -2,7 +2,13 @@ version: "2"
 services:
 
   app:
-    build: .
+    build:
+      context: .
+      cache_from:
+        - ruby:2.5.1-alpine
+        - salon_loaders
+        - nyulibraries/salon_loaders:latest
+        - nyulibraries/salon_loaders:$BRANCH_NO_SLASH
     image: salon_loaders
     environment:
       SALON_CLIENT_ID:
@@ -11,7 +17,13 @@ services:
       SALON_LOAD_URL:
 
   test:
-    build: .
+    build:
+      context: .
+      cache_from:
+        - ruby:2.5.1-alpine
+        - salon_loaders
+        - nyulibraries/salon_loaders:latest
+        - nyulibraries/salon_loaders:$BRANCH_NO_SLASH
     image: salon_loaders
     command: "bundle exec rake"
     environment:
