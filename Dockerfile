@@ -13,6 +13,7 @@ COPY --chown=docker:docker Gemfile Gemfile.lock ./
 RUN apk add --no-cache $BUILD_PACKAGES $RUN_PACKAGES \
   && bundle config --local github.https true \
   && gem install bundler && bundle install --jobs 20 --retry 5 \
+  && rm -rf /root/.bundle && rm -rf /usr/local/bundle/cache/ \
   && apk del $BUILD_PACKAGES \
   && chown -R docker:docker /usr/local/bundle
 
