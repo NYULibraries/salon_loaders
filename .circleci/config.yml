@@ -24,12 +24,11 @@ jobs:
           command: |
             touch secrets.env
             export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
-            docker-compose build
             docker-compose run test
       - run:
           name: Scan image
           command: |
-            docker-compose build --no-cache scan
+            docker-compose build app && docker-compose build --no-cache scan
       - run:
           name: Docker login
           command: |
