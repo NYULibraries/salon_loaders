@@ -12,7 +12,6 @@ WORKDIR $INSTALL_PATH
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 RUN apk add --no-cache $BUILD_PACKAGES $RUN_PACKAGES \
   && bundle config --global github.https true \
-  && bundle config --global disable_shared_gems true \
   && gem install bundler && bundle install --jobs 20 --retry 5 \
   && apk del $BUILD_PACKAGES \
   && chown -R docker:docker ./ \
@@ -21,8 +20,6 @@ RUN apk add --no-cache $BUILD_PACKAGES $RUN_PACKAGES \
 COPY --chown=docker:docker . .
 
 USER docker
-
-ENV BUNDLE_PATH /usr/local/bundle
 
 RUN bundle config --global github.https true
 
