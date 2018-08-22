@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:17.09.0-ce-git
+      - image: docker:18.05.0-ce-git
     working_directory: ~/app
     steps:
       - checkout
@@ -16,14 +16,21 @@ jobs:
             pip install \
               docker-compose==1.16.1
       - run:
+          name: Pull docker images
+          command: |
+            script/pull_docker.sh
+      - run:
           name: Run tests
           command: |
             touch secrets.env
+            export BRANCH_NO_SLASH=${CIRCLE_BRANCH//\//_}
             docker-compose build
-            docker-compose run app bundle exec rake
+            docker-compose run test
       - run:
-          name: Deploy docker image
+          name: Docker login
           command: |
-            docker tag nyulibraries/salon_loaders nyulibraries/salon_loaders:${CIRCLE_BRANCH//\//_}
             docker login -u "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
-            docker push nyulibraries/salon_loaders:${CIRCLE_BRANCH//\//_}
+      - run:
+          name: Push docker images
+          command: |
+            script/push_docker.sh

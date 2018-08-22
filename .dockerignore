@@ -4,3 +4,8 @@ coverage/
 *.local.sh
 
 *.txt
+
+.dockerignore
+.gitignore
+.circleci/
+.ruby-version
