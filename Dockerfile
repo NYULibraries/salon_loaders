@@ -8,6 +8,7 @@ RUN addgroup -g 1000 -S docker && \
   adduser -u 1000 -S -G docker docker
 
 WORKDIR $INSTALL_PATH
+RUN chown docker:docker .
 
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 RUN apk add --no-cache $BUILD_PACKAGES $RUN_PACKAGES \
