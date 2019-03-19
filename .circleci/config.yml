@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Pull docker images
           command: |
-            script/pull_docker.sh
+            script/pull_quay.sh
       - run:
           name: Run tests
           command: |
