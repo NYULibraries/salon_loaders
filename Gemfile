@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'rake', '~> 12'
+gem 'rake', '~> 13'
 gem 'lib_guides-api', github: 'NYULibraries/lib_guides-api', tag: 'v1.0.0'
 
 group :test do
