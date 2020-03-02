@@ -30,11 +30,3 @@ services:
     command: "bundle exec rake"
     environment:
       CI:
-
-  scan:
-    image: salon_loaders_scan
-    build:
-      context: .
-      dockerfile: Dockerfile.scan
-      args:
-        TOKEN: $AQUA_MICROSCANNER_TOKEN
