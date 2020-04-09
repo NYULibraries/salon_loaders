@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem 'rake', '~> 13'
-gem 'lib_guides-api', github: 'NYULibraries/lib_guides-api', tag: 'v1.0.0'
+gem 'lib_guides-api', github: 'NYULibraries/lib_guides-api', branch: 'fix/endpoint_update'
 
 group :test do
   gem 'rspec', '~> 3.6'
