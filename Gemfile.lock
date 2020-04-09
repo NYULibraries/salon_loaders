@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/NYULibraries/lib_guides-api.git
-  revision: 8c4dd35ea1bfb3cf21446b51371fcb2a42af9616
-  branch: fix/endpoint_update
+  revision: c4d11c55ff5c5eb21aa4209c650d47dcc0f2d7af
+  tag: v1.0.1
   specs:
-    lib_guides-api (0.0.0)
+    lib_guides-api (1.0.1)
       faraday (>= 0.11)
       json
 
