@@ -27,4 +27,4 @@ USER docker
 
 COPY --chown=docker:docker . .
 
-CMD [ "scripts/load_json.sh" ]
+CMD [ "script/load_json.sh" ]
