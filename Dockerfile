@@ -1,4 +1,4 @@
-FROM ruby:2.6.3-alpine
+FROM ruby:2.6.10-alpine
 
 ENV INSTALL_PATH /app
 ENV BUILD_PACKAGES ruby-dev build-base git
@@ -10,7 +10,7 @@ RUN addgroup -g 1000 -S docker && \
 WORKDIR $INSTALL_PATH
 RUN chown docker:docker .
 
-RUN apk --no-cache --upgrade add --upgrade bzip2=~1.0.6-r7
+#RUN apk --no-cache --upgrade add --upgrade bzip2=~1.0.6-r7
 
 COPY --chown=docker:docker Gemfile Gemfile.lock ./
 RUN apk add --no-cache $BUILD_PACKAGES $RUN_PACKAGES \
