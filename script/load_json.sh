@@ -1,4 +1,4 @@
-#!/bin/sh -ex
+#!/bin/sh -e
 bundle exec rake salon_loaders:libguides:json
 #export TOKEN=`curl -s -X POST \
 #  -d grant_type=client_credentials \
