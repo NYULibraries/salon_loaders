@@ -23,7 +23,6 @@ jobs:
     <<: *docker-defaults
     steps:
       - checkout
-      - setup_remote_docker
       - run:
           name: Install dependencies
           command: |
@@ -49,7 +48,6 @@ jobs:
   deploy-dev:
     <<: *docker-defaults
     steps:
-      - setup_remote_docker
       - <<: *auth_quay
       - run:
           name: Export Hermes Dev env vars
@@ -60,7 +58,6 @@ jobs:
   deploy-prod:
     <<: *docker-defaults
     steps:
-      - setup_remote_docker
       - <<: *auth_quay
       - run:
           name: Export Hermes Prod env vars
