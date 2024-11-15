@@ -24,13 +24,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: |
-            apk add --no-cache \
-              py-pip
-            pip install \
-              docker-compose==1.16.1
-      - run:
           name: Pull docker images
           command: |
             script/pull_quay.sh
