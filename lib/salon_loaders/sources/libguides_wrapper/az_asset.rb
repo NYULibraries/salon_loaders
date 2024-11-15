@@ -33,7 +33,7 @@ module SalonLoaders
         SALON_URL_PREFIX = "https://persistent.library.nyu.edu/arch/"
         # Expected to find library_review in the format
         # => "ONLY KARMS | NYU{METALIB_ID} | PROXY_(YES|NO) | http://url.com"
-        LIBRARY_REVIEW_REGEX = /[\w\s]+\|\s*((?<id>NYU\d+)|#{NULL_ID_TEXT})\s*\|\s*(?<proxy_flag>PROXY_(YES|NO))\s*\|\s*(?<url>#{URI.regexp})/
+        LIBRARY_REVIEW_REGEX = /[\w\s]+\|\s*((?<id>NYU\d+)|#{NULL_ID_TEXT})\s*\|\s*(?<proxy_flag>PROXY_(YES|NO))\s*\|\s*(?<url>#{URI::regexp})/
         SALON_ID_REGEX = /^#{SALON_URL_PREFIX}(?<salon_id>([\w\d]+))/
 
         def library_review_match_data
