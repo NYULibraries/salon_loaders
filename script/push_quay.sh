@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 docker tag salon_loaders quay.io/nyulibraries/salon_loaders:latest
 docker tag salon_loaders quay.io/nyulibraries/salon_loaders:${CIRCLE_BRANCH//\//_}

@@ -1,9 +1,6 @@
-# Aliases
 docker-defaults: &docker-defaults
-  docker:
-    - image: quay.io/nyulibraries/circleci_docker:18.06.3-dc-1.23.2-0
-      #environment:
-      #  - IMAGE_NAME=ares-templates
+  machine:
+    image: ubuntu-2204:current
   working_directory: ~/app
 
 auth_quay: &auth_quay
@@ -26,14 +23,6 @@ jobs:
     <<: *docker-defaults
     steps:
       - checkout
-      - setup_remote_docker
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --no-cache \
-              py-pip
-            pip install \
-              docker-compose==1.16.1
       - run:
           name: Pull docker images
           command: |
@@ -52,7 +41,6 @@ jobs:
   deploy-dev:
     <<: *docker-defaults
     steps:
-      - setup_remote_docker
       - <<: *auth_quay
       - run:
           name: Export Hermes Dev env vars
@@ -63,7 +51,6 @@ jobs:
   deploy-prod:
     <<: *docker-defaults
     steps:
-      - setup_remote_docker
       - <<: *auth_quay
       - run:
           name: Export Hermes Prod env vars
