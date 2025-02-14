@@ -4,7 +4,7 @@ module SalonLoaders
       class AzAsset
         extend Forwardable
 
-        delegate [:id, :url, :library_review] => :libguides_asset
+        delegate [:id, :url, :internal_note] => :libguides_asset
 
         attr_accessor :libguides_asset
 
@@ -13,15 +13,15 @@ module SalonLoaders
         end
 
         def enable_proxy?
-          library_review_match_data[:proxy_flag] === "PROXY_YES" if library_review_match_data && library_review_match_data[:proxy_flag]
+          internal_note_match_data[:proxy_flag] === "PROXY_YES" if internal_note_match_data && internal_note_match_data[:proxy_flag]
         end
 
         def resource_url
-          library_review_match_data[:url] if library_review_match_data
+          internal_note_match_data[:url] if internal_note_match_data
         end
 
         def metalib_id
-          library_review_match_data[:id] if library_review_match_data
+          internal_note_match_data[:id] if internal_note_match_data
         end
 
         def salon_id
@@ -31,13 +31,13 @@ module SalonLoaders
         private
         NULL_ID_TEXT = "NULL"
         SALON_URL_PREFIX = "https://persistent.library.nyu.edu/arch/"
-        # Expected to find library_review in the format
+        # Expected to find internal_note in the format
         # => "ONLY KARMS | NYU{METALIB_ID} | PROXY_(YES|NO) | http://url.com"
         LIBRARY_REVIEW_REGEX = /[\w\s]+\|\s*((?<id>NYU\d+)|#{NULL_ID_TEXT})\s*\|\s*(?<proxy_flag>PROXY_(YES|NO))\s*\|\s*(?<url>#{URI.regexp})/
         SALON_ID_REGEX = /^#{SALON_URL_PREFIX}(?<salon_id>([\w\d]+))/
 
-        def library_review_match_data
-          @library_review_match_data ||= library_review.match(LIBRARY_REVIEW_REGEX) if library_review
+        def internal_note_match_data
+          @internal_note_match_data ||= internal_note.match(LIBRARY_REVIEW_REGEX) if internal_note
         end
 
         def url_match_data
