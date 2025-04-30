@@ -13,7 +13,8 @@ module SalonLoaders
         end
 
         def enable_proxy?
-          internal_note_match_data[:proxy_flag] === "PROXY_YES" if internal_note_match_data && internal_note_match_data[:proxy_flag]
+          #internal_note_match_data[:proxy_flag] === "PROXY_YES" if internal_note_match_data && internal_note_match_data[:proxy_flag]
+          internal_note_match_data[:proxy_bool] === "True" if internal_note_match_data && internal_note_match_data[:proxy_bool]
         end
 
         def resource_url
@@ -21,7 +22,8 @@ module SalonLoaders
         end
 
         def metalib_id
-          internal_note_match_data[:id] if internal_note_match_data
+          #internal_note_match_data[:id] if internal_note_match_data
+          nil
         end
 
         def salon_id
@@ -33,11 +35,12 @@ module SalonLoaders
         SALON_URL_PREFIX = "https://persistent.library.nyu.edu/arch/"
         # Expected to find internal_note in the format
         # => "ONLY KARMS | NYU{METALIB_ID} | PROXY_(YES|NO) | http://url.com"
-        LIBRARY_REVIEW_REGEX = /[\w\s]+\|\s*((?<id>NYU\d+)|#{NULL_ID_TEXT})\s*\|\s*(?<proxy_flag>PROXY_(YES|NO))\s*\|\s*(?<url>#{URI.regexp})/
+        #LIBRARY_REVIEW_REGEX = /[\w\s]+\|\s*((?<id>NYU\d+)|#{NULL_ID_TEXT})\s*\|\s*(?<proxy_flag>PROXY_(YES|NO))\s*\|\s*(?<url>#{URI.regexp})/
+        INTERNAL_NOTE_REGEX = /[\w\s]+\|[\w\s\:]+\|[\w\s\:]+\|\s*use_proxy:\s*(?<proxy_bool>(True|False))\s*\|\s*url:\s*(?<url>#{URI.regexp})/
         SALON_ID_REGEX = /^#{SALON_URL_PREFIX}(?<salon_id>([\w\d]+))/
 
         def internal_note_match_data
-          @internal_note_match_data ||= internal_note.match(LIBRARY_REVIEW_REGEX) if internal_note
+          @internal_note_match_data ||= internal_note.match(INTERNAL_NOTE_REGEX) if internal_note
         end
 
         def url_match_data
