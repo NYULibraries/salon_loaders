@@ -18,16 +18,16 @@ describe SalonLoaders::Sources::LibguidesWrapper::AzAsset do
     subject{ asset.enable_proxy? }
 
     context "when internal_note is present" do
-      context "and PROXY_YES is present" do
-        let(:internal_note){ 'ONLY KARMS | NYU00685 | PROXY_YES | http://url' }
+      context "and use_proxy: True is present" do
+        let(:internal_note){ 'ONLY KARMS | oclc: 1136611195 | force_proxy: False | use_proxy: True | url: https://search.alexanderstreet.com/qwst | staff_logs: Created - MK 06/14/2023' }
         it { is_expected.to be_truthy }
       end
-      context "but PROXY_NO is present" do
-        let(:internal_note){ 'ONLY KARMS | NYU00685 | PROXY_NO | http://url' }
+      context "but use_proxy: False is present" do
+        let(:internal_note){ 'ONLY KARMS | oclc: 1136611195 | force_proxy: True | use_proxy: False | url: https://search.alexanderstreet.com/qwst | staff_logs: Created - MK 06/14/2023' }
         it { is_expected.to be_falsy }
       end
       context "and any other value is present" do
-        let(:internal_note){ 'ONLY KARMS | NYU00685 | INVALID | http://url' }
+        let(:internal_note){ 'ONLY KARMS | oclc: null | force_proxy: True | PROXY_YES | url: https://search.alexanderstreet.com/qwst | staff_logs: Created - MK 06/14/2023' }
         it { is_expected.to be_falsy }
       end
     end
@@ -40,15 +40,15 @@ describe SalonLoaders::Sources::LibguidesWrapper::AzAsset do
     subject{ asset.resource_url }
     context "with internal_note" do
       context "with valid internal_note" do
-        let(:internal_note){ "ONLY KARMS | NYU00676 | PROXY_NO | http://dl.acm.org/dl.cfm |" }
+        let(:internal_note){ "ONLY KARMS | oclc: 1136611195 | force_proxy: False | use_proxy: True | url: http://dl.acm.org/dl.cfm | staff_logs: Created - MK 06/14/2023" }
         it { is_expected.to eq "http://dl.acm.org/dl.cfm" }
       end
       context "with invalid internal_note URL" do
-        let(:internal_note){ "ONLY KARMS | NYU00676 | PROXY_NO |applesauce |" }
+        let(:internal_note){ "ONLY KARMS | oclc: 1136611195 | force_proxy: False | use_proxy: True | url: notavalidurl | staff_logs: Created - MK 06/14/2023" }
         it { is_expected.to eq nil }
       end
       context "with invalid internal_note ID in null form" do
-        let(:internal_note){ "ONLY KARMS | NULL | PROXY_YES | http://dl.acm.org/dl.cfm |" }
+        let(:internal_note){ "ONLY KARMS | oclc: null | force_proxy: False | use_proxy: True | url: http://dl.acm.org/dl.cfm | staff_logs: Created - MK 06/14/2023" }
         it { is_expected.to eq "http://dl.acm.org/dl.cfm" }
       end
       context "with invalid internal_note ID not in null form" do
@@ -66,7 +66,7 @@ describe SalonLoaders::Sources::LibguidesWrapper::AzAsset do
     context "with internal_note" do
       context "with valid internal_note" do
         let(:internal_note){ "ONLY KARMS | NYU00676 | PROXY_NO | http://dl.acm.org/dl.cfm |" }
-        it { is_expected.to eq "NYU00676" }
+        it { is_expected.to eq nil }
       end
       context "with invalid internal_note URL" do
         let(:internal_note){ "ONLY KARMS | NYU00676 | PROXY_YES | applesauce |" }
