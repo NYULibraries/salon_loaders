@@ -23,7 +23,7 @@ namespace :salon_loaders do
       loader = args[:loader]
       logger = Logger.new((ENV['LOGGER'] || STDOUT))
       loader.error_records.each do |r|
-        logger.info "Could not load resource: LibGuides ID: #{r.id}; LibGuides URL: #{r.url}; LibGuides library review: #{r.library_review}"
+        logger.info "Could not load resource: LibGuides ID: #{r.id}; LibGuides URL: #{r.url}; LibGuides internal note: #{r.internal_note}"
       end
       logger.info "#{loader.permalinks.count} permalinks created"
       logger.info "#{loader.error_records.count} resources unreadable"
