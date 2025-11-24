@@ -2,7 +2,7 @@ module SalonLoaders
   class Permalink
     attr_accessor :key, :url, :use_proxy
 
-    @@proxy_prefix = "https://proxy.library.nyu.edu/login?qurl="
+    @@proxy_prefix = "https://go.openathens.net/redirector/nyu.edu?url="
 
     def initialize(key:, url:, use_proxy: false)
       @key = key
