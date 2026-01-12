@@ -29,7 +29,7 @@ describe SalonLoaders::Sources::Libguides do
       context 'when no metalib id is in the internal note field' do
         context 'and PROXY_YES is present' do
           subject { libguides.get_permalinks.detect{|x| x.key == 'NYU00685' } }
-          its(:url){ is_expected.to eq "https://proxy.library.nyu.edu/login?qurl=https%3A%2F%2Fsearch.alexanderstreet.com%2Fqwst" }
+          its(:url){ is_expected.to eq "https://go.openathens.net/redirector/nyu.edu?url=https%3A%2F%2Fsearch.alexanderstreet.com%2Fqwst" }
         end
       end
     end
